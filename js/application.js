@@ -143,11 +143,10 @@ jQuery(
 
 	   });
 
-           $("#restaurant").live("change",function(){
-	   alert("changed text");
-	         $("#package").val("");
+           
+	   $("a#chooseRestaurantButton").live("click",function(e){
+                   localStorage.removeItem("currentPacks")
 	   });
-
 	   $("a#choosePackageButton").live("click",function(e){
 		  if( $("#restaurant").val().trim() == ""){
 		       alert("prohibited: you have not choose restaurant");
