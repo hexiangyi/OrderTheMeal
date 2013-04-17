@@ -1,7 +1,5 @@
 jQuery(
    function(){
-           alert("start");
-	   localStorage.setItem("key0","value0");
            $("#choosePeoplePage").live("pagecreate",function(){
 		 var userList = ""
 		 var tmpId = ""
@@ -12,14 +10,6 @@ jQuery(
 		     num += 1;
 		 });
 		 $("#listPeople").append(userList);
-		//$("#listPeople").listview('refresh');
-	   });
-	   //doesn't work except orderpage
-	   $("#choosePeoplePage").live("pagebeforechange",function(){
-	          alert("getUser"); 
-		  //      var userName = ["pan","wei"]
-		  //localStorage.setItem("n",users);
-	          //localStorage.setItem("n",JSON.Stringify("Jack"));//['currentUsers']=JSON.Stringify("userName")
 	   });
 
            $("#chooseRestaurantPage").live("pagecreate",function(){
@@ -35,10 +25,7 @@ jQuery(
 	   });
 
 	   $("#choosePackagePage").live("pageshow",function(){
-		 alert("I am page ChoosePackagePage");
                  var str = ""
-		 //str = '<li data-role="fieldcontain"><h2>delicious food - tomatoes</h2><p class="ui-li-aside">3.5 dollar </p><label for="slider"> Slider:</label><input type="range" name="slider2" id="slider" value="1" min="0" max="100" data-highlight="true"></li>'
-		 //str = '<li data-role="fieldcontain"><h2>delicious food - tomatoes</h2><p>3RMB</p><input type="number" name="number" id="numberPattern" value="1" class="ui-li-aside" ></li>'
 		   var curRests = localStorage.getItem("currentRests");
 		   if(curRests != null){
 		       curRests = eval('('+curRests+')');
@@ -101,7 +88,6 @@ jQuery(
 	   });
 
 	   $("#orderDetailPage").live("pageshow",function(){
-	          alert("orderDetail page"); 
 		  var ordUserInfo = ""
 		  var nordUserInfo = ""
 		  var orderDetails = localStorage.getItem("orderDetails");
@@ -151,30 +137,18 @@ jQuery(
 		  $("#summary").text(ordNum+' user(s) has ordered; ' + nordNum +' user(s) has not ordered'+';  total expenses: ' + allSum + 'RMB');
 
 		  $("#orderDetailsList").listview('refresh');
-		  //$(ordStr).appendTo("");
 
-		     /*$.each(users,function(i,val){
-		         for(var userName in orderDetails){
-			    var tmpUser = $.grep(users,function(n,i){
-			         
-			    }); 
-			 }
-		     });*/
 
 
 
 	   });
 
-
-
-	   $("a#choosePeopleButton").live("click",function(e){
-	         alert("you  hit choosePeople button");
+           $("#restaurant").live("change",function(){
+	   alert("changed text");
+	         $("#package").val("");
 	   });
-	   $("a#chooseRestaurantButton").live("click",function(e){
-	         alert("you  hit chooseRestaurant button");
-	   });
+
 	   $("a#choosePackageButton").live("click",function(e){
-	          alert("you  hit choosePackage button");
 		  if( $("#restaurant").val().trim() == ""){
 		       alert("prohibited: you have not choose restaurant");
 		       this.href= "javascript:void(0)";
@@ -199,10 +173,8 @@ jQuery(
 		            curPacks = $.grep(curPacks,function(n,i){
 		                  return (n.number > 0)
 		            })
-			    alert(curPacks)
 			    str = "{"
 			    $.each(curUsers,function(i,val){
-			          alert(val.name); 
 				  str += '"' + val.name + '":['
 				  $.each(curPacks,function(j,val2){
 				      str += '{"packName":"'+ val2.packName + '",' 
@@ -213,7 +185,6 @@ jQuery(
 				  str += '],'
 			    })
 			    str +="}"
-			    alert(str)
 		            localStorage.removeItem("orderDetails");
 			    localStorage.setItem("orderDetails",str);
 			    //jump to orderDetail
@@ -230,7 +201,6 @@ jQuery(
 		       str += '{"name":"' + this.value + '"},';
 		  });
 		  str += "]"
-		  alert(str);
 		  localStorage.removeItem("currentUsers");
 	          localStorage.setItem("currentUsers",str);
 	   });
@@ -240,7 +210,6 @@ jQuery(
 		       str += '{"name":"' + this.value + '"},';
 		  });
 		  str += "]"
-		  alert(str);
 		  localStorage.removeItem("currentRests");
 	          localStorage.setItem("currentRests",str);
 	   });
@@ -253,10 +222,8 @@ jQuery(
 		       str += '"restaurant":"' + $(this).children().eq(3).text() + '"},'
 		  });
 		  str += "]"
-		  alert(str);
 		  localStorage.removeItem("currentPacks");
 	          localStorage.setItem("currentPacks",str);
-		  //alert(eval('('+localStorage.getItem("currentPacks")+')')
 	   });
          
 
