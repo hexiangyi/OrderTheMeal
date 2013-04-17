@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>订餐</title>
+	<link rel="stylesheet"  href="lib/jquery.mobile-1.2.0/jquery.mobile-1.2.0.min.css" />
+
+    <script src="lib/jquery.js"></script>
+	<script src="lib/jquery.mobile-1.2.0/jquery.mobile-1.2.0.min.js"></script>
+
+    <script src='data/foods.json' type='text/javascript'></script>
+    <script src='data/restaurants.json' type='text/javascript'></script>
+    <script src='data/users.json' type='text/javascript'></script>
+
+    <script src="js/application.js"></script>
+</head>
+<body>
+  <!-- home page -->
+  <div data-role="page" id="home">
+      <div data-role="header">
+           <h1> order the meal </h1>
+      </div>
+      <div data-role="content">
+           <a href="#orderPage" data-role="button" data-icon="forward">Help Order the Meal</a>
+           <a href="#orderDetailPage" data-role="button" data-icon="forward">Show Order Details</a>
+      </div>
+  </div>
+
+
+
+
+  <!-- order page  -->
+  <div data-role="page" id="orderPage" data-dom-cache="false">
+      <div data-role="header" data-position="inline">
+           <a data-rel="back" data-transition="flip" data-icon="arrow-l" id="packBackButton">back</a>
+	   <h1> Order the Meal </h1>
+      </div>
+      <div data-role="content">
+	           <label for="people">people</label>
+	           <input type="text" name="people" readonly="readonly" id="people" value=""  />
+	          <a href="#choosePeoplePage" id="choosePeopleButton" data-role="button"> choosePeople </a>
+	         
+	           <label for="restaurant">restaurant</label>
+	           <input type="text" name="restaurant"  readonly="readonly" id="restaurant" value=""  />
+	          <a href="#chooseRestaurantPage" id="chooseRestaurantButton" data-role="button"> chooseRestaurant </a>
+	           <label for="package">package</label>
+
+	           <input type="text" name="package"  readonly="readonly" id="package" value=""  /> 
+	          <a href="#choosePackagePage" id="choosePackageButton" data-role="button"> choosePackage </a>
+	          <a href="#dialog" id="submitButton" data-role="button" > submit </a>
+
+      </div>
+      <div data-role="footer">
+           <h4>Page Footer </h4>
+      </div>
+   </div>
+
+
+   <!-- choosePeople page  -->
+   <div data-role="page" id="choosePeoplePage" data-dom-cache="true">
+      <div data-role="header" data-position="inline">
+           <a data-rel="back" data-transition="flip" data-icon="arrow-l" id="userBackButton">back</a>
+	   <h1> choose the people </h1>
+      </div>
+          <select name="genre" id="genre" data-native-menu="false" mutiple="multiple">
+	         <option value = "null" data-placeholder="true" >select one ..</option>
+	         <option value = "action" data-placeholder="true" >select action ..</option>
+	         <option value = "comedy" data-placeholder="true" >select comedy ..</option>
+	         <option value = "romance" data-placeholder="true" >select romance ..</option>
+	 </select>
+	 <div id="listPeople" data-theme="a">  
+	      
+	 </div>
+   </div>
+
+
+
+   <!-- chooseRestaurant Page  -->
+   <div data-role="page" id="chooseRestaurantPage" data-dom-cache="true">
+      <div data-role="header" data-position="inline">
+           <a data-rel="back" data-transition="flip" data-icon="arrow-l" id="restBackButton">back</a>
+	   <h1> choose the restaurant </h1>
+      </div>
+  <select name="genre" id="genre" data-native-menu="false" mutiple="multiple">
+	         <option value = "null" data-placeholder="true" >select one ..</option>
+	         <option value = "action" data-placeholder="true" >select action ..</option>
+	         <option value = "comedy" data-placeholder="true" >select comedy ..</option>
+	         <option value = "romance" data-placeholder="true" >select romance ..</option>
+	 </select>
+	 <div id="listRestaurant" data-theme="a">  
+	      
+	 </div>
+
+
+   </div>
+
+
+
+   <!-- choosePackage Page  -->
+   <div data-role="page" id="choosePackagePage" data-dom-cache="true">
+      <div data-role="header" data-position="inline">
+           <a data-rel="back" data-transition="flip"  data-icon="arrow-l" id="packBackButton">back</a>
+	   <h1> choose the package </h1>
+      </div>
+          <p> you enter restaurant:</p>
+	  <ul id="listPack" data-role="listview">  </ul>
+	  <div data-role="listview">
+		  <li>
+		  <label for="f">aaa</label>
+		  <input id="f"/>
+		  </li>
+	  </div>
+   </div>
+
+   <!-- orderDetail Page  -->
+   <div data-role="page" id="orderDetailPage" data-dom-cache="true">
+      <div data-role="header" data-position="inline">
+           <a data-rel="back" data-transition="flip" data-icon="arrow-l">back</a>
+	   <h1> Order Details </h1>
+      </div>
+      <div data-role="content" id="detailsContent">
+           <ul data-role="listview" id="orderDetailsList">
+	     <li data-role="list-divider">hei</li>
+	      <li>a</li>
+	      <li>b</li>
+	   </ul>
+      </div>
+      <div data-role="footer">
+           <h4 id="summary">Page Footer </h4>
+      </div>
+   </div>
+</body>
+</html>
