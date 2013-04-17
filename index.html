@@ -6,16 +6,17 @@
 	<title>订餐</title>
 	<link rel="stylesheet"  href="lib/jquery.mobile-1.2.0/jquery.mobile-1.2.0.min.css" />
 
-    <script src="lib/jquery.js"></script>
+        <script src="lib/jquery.js"></script>
 	<script src="lib/jquery.mobile-1.2.0/jquery.mobile-1.2.0.min.js"></script>
 
-    <script src='data/foods.json' type='text/javascript'></script>
-    <script src='data/restaurants.json' type='text/javascript'></script>
-    <script src='data/users.json' type='text/javascript'></script>
+        <script src='data/foods.json' type='text/javascript'></script>
+        <script src='data/restaurants.json' type='text/javascript'></script>
+        <script src='data/users.json' type='text/javascript'></script>
 
-    <script src="js/application.js"></script>
+        <script src="js/application.js"></script>
 </head>
 <body>
+
   <!-- home page -->
   <div data-role="page" id="home">
       <div data-role="header">
@@ -63,12 +64,6 @@
            <a data-rel="back" data-transition="flip" data-icon="arrow-l" id="userBackButton">back</a>
 	   <h1> choose the people </h1>
       </div>
-          <select name="genre" id="genre" data-native-menu="false" mutiple="multiple">
-	         <option value = "null" data-placeholder="true" >select one ..</option>
-	         <option value = "action" data-placeholder="true" >select action ..</option>
-	         <option value = "comedy" data-placeholder="true" >select comedy ..</option>
-	         <option value = "romance" data-placeholder="true" >select romance ..</option>
-	 </select>
 	 <div id="listPeople" data-theme="a">  
 	      
 	 </div>
@@ -82,13 +77,7 @@
            <a data-rel="back" data-transition="flip" data-icon="arrow-l" id="restBackButton">back</a>
 	   <h1> choose the restaurant </h1>
       </div>
-  <select name="genre" id="genre" data-native-menu="false" mutiple="multiple">
-	         <option value = "null" data-placeholder="true" >select one ..</option>
-	         <option value = "action" data-placeholder="true" >select action ..</option>
-	         <option value = "comedy" data-placeholder="true" >select comedy ..</option>
-	         <option value = "romance" data-placeholder="true" >select romance ..</option>
-	 </select>
-	 <div id="listRestaurant" data-theme="a">  
+  	 <div id="listRestaurant" data-theme="a">  
 	      
 	 </div>
 
@@ -103,14 +92,8 @@
            <a data-rel="back" data-transition="flip"  data-icon="arrow-l" id="packBackButton">back</a>
 	   <h1> choose the package </h1>
       </div>
-          <p> you enter restaurant:</p>
-	  <ul id="listPack" data-role="listview">  </ul>
-	  <div data-role="listview">
-		  <li>
-		  <label for="f">aaa</label>
-		  <input id="f"/>
-		  </li>
-	  </div>
+	  <ul id="listPack" data-role="listview">  
+	  </ul>
    </div>
 
    <!-- orderDetail Page  -->
@@ -121,9 +104,6 @@
       </div>
       <div data-role="content" id="detailsContent">
            <ul data-role="listview" id="orderDetailsList">
-	     <li data-role="list-divider">hei</li>
-	      <li>a</li>
-	      <li>b</li>
 	   </ul>
       </div>
       <div data-role="footer">
