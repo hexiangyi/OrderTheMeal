@@ -161,6 +161,7 @@ jQuery(
 		      $("#package").val().trim() == ""
 		    ){
 		        alert("your input is not complete");
+			this.href="#"
 		        
 		    }else{
 		        //store order info
@@ -186,6 +187,8 @@ jQuery(
 			    str +="}"
 		            localStorage.removeItem("orderDetails");
 			    localStorage.setItem("orderDetails",str);
+			    localStorage.removeItem("currentUsers");
+			    localStorage.removeItem("currentPacks");
 			    //jump to orderDetail
 			    this.href="#orderDetailPage"
 			 }
