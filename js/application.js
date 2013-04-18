@@ -30,6 +30,7 @@ jQuery(
 
 	   $("#choosePackagePage").live("pageshow",function(){
                  var str = ""
+		 //genrating all the packages in the restaurants choosed
 		   var curRests = localStorage.getItem("currentRests");
 		   if(curRests != null){
 		       curRests = eval('('+curRests+')');
@@ -55,7 +56,7 @@ jQuery(
 	   });
 
            $("#orderPage").live("pageshow",function(){
-	           
+	          //update the value of three input ui 
 		   var curUsers = localStorage.getItem("currentUsers");
 		   var userStr = ""
 		   if(curUsers != null){
@@ -138,6 +139,7 @@ jQuery(
 		  $("#orderDetailsList").append(ordStr);
 		  $("#orderDetailsList").append('<li data-role="list-divider">'+nordNum +'  user(s) has not ordered</li>');
 		  $("#orderDetailsList").append(nordStr);
+		  //hight light user's expense if its bigger than 12
 		  $("#detailsContent").find("span").css('color','red');
 		  $("#summary").text(ordNum+' user(s) has ordered; ' + nordNum +' user(s) has not ordered'+';  total expenses: ' + allSum + 'RMB');
 
@@ -257,7 +259,6 @@ jQuery(
 		       str += '},'
 		  });
 		  str += "]"
-		  alert(str  +"  :packs here");
 		  localStorage.removeItem("currentPacks");
 	          localStorage.setItem("currentPacks",str);
 	   });
