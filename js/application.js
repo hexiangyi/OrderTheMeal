@@ -1,9 +1,6 @@
 jQuery(
    function(){
            $("#choosePeoplePage").live("pageshow",function(){
-			    /*$($input[name="userCheckBox"]).each(function(){
-			        $(this).attr("checked",false)
-			    });*/
 		 var userList = ""
 		 var tmpId = ""
 		 var num = 1;
@@ -44,8 +41,8 @@ jQuery(
 				       str += '<li data-role="fieldcontain">'
 				       str += '<h2>' + pack.name + '</h2>'
 				       str += '<p>' + pack.price + 'RMB</p>'
-				       str += '<input type="number" id="'+tmpID+'" class="ul-li-aside" value="0" min="0">' 
-				       str += '<label for="'+tmpID+'">' + r + '</lable>' 
+				       str += '<p class="ui-li-aside"><input type="number" id="'+tmpID+'"  value="0" min="0">' 
+				       str += '<label for="'+tmpID+'">' + r + '</lable></p>' 
 				       
 				 });
 			      }
@@ -54,6 +51,7 @@ jQuery(
 		   }
 		 $("#listPack").empty();
 		 $("#listPack").append(str);
+		 $("#listPack").listview('refresh');
 	   });
 
            $("#orderPage").live("pageshow",function(){
@@ -252,12 +250,14 @@ jQuery(
 	   $("#packBackButton").live("click",function(){
 	          var str = "["
 		  $.each($("#listPack").children(),function(e){
-		       str += '{"packName":"' + $(this).children().eq(0).text() + '",'
-		       str += '"price":"' + $(this).children().eq(1).text().split("RMB")[0].toString() + '",'
-		       str += '"number":"' + $(this).children().eq(2).val().trim() + '",'
-		       str += '"restaurant":"' + $(this).children().eq(3).text() + '"},'
+		       str += '{"packName":"' + $(this).children().eq(1).text().trim() + '",'
+		       str += '"price":"' + $(this).children().eq(2).text().split("RMB")[0].toString() + '",'
+		       str += '"number":"' + $(this).children().find("input").val().trim() + '",'
+		       str += '"restaurant":"' + $(this).children().find("label").text()+'",'
+		       str += '},'
 		  });
 		  str += "]"
+		  alert(str  +"  :packs here");
 		  localStorage.removeItem("currentPacks");
 	          localStorage.setItem("currentPacks",str);
 	   });
