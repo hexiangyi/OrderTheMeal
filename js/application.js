@@ -112,9 +112,10 @@ jQuery(
 			    ordStr += '<p>' + val.restaurant  + '   ' + val.packName +'('+val.number+' packs) </p>'
 			    personSum = eval(personSum) + eval(val.number) * eval(val.price) 
 
-		          })		 
-			if( eval(personSum)  > eval("12")){
-			       priceStr = '<p class="ui-li-aside"> <span>' + personSum +'RMB</span></p>'
+		          })		
+			var overExpense =  eval(personSum) - eval("12")
+			if( eval(overExpense) >  eval(0) ){
+			       priceStr = '<p class="ui-li-aside"> <span>' + personSum +'RMB  (over '+overExpense+'RMB)</span></p>'
 	    	        }else{
 			       priceStr = '<p class="ui-li-aside">' + personSum +'RMB</p>'
 		         }
