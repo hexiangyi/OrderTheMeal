@@ -161,29 +161,56 @@ jQuery(
 		      $("#package").val().trim() == ""
 		    ){
 		        alert("your input is not complete");
-			this.href="#"
+		        this.href= "javascript:void(0)";
 		        
 		    }else{
 		        //store order info
 		        var curPacks = localStorage.getItem("currentPacks");
 		        var curUsers = localStorage.getItem("currentUsers");
+		        var curOrderDetails = localStorage.getItem("orderDetails");
 			if(curPacks != null  && curUsers != null){
 			    curPacks = eval('('+curPacks+')');
 			    curUsers = eval('('+curUsers+')');
 		            curPacks = $.grep(curPacks,function(n,i){
 		                  return (n.number > 0)
 		            })
-			    str = "{"
+			    var str = "{"
+			    curStr = ""
 			    $.each(curUsers,function(i,val){
-				  str += '"' + val.name + '":['
+				  curStr += '"' + val.name + '":['
 				  $.each(curPacks,function(j,val2){
-				      str += '{"packName":"'+ val2.packName + '",' 
-				      str += '"price":"'+ val2.price + '",' 
-				      str += '"number":"'+ val2.number + '",' 
-				      str += '"restaurant":"'+ val2.restaurant+ '"},' 
+				      curStr += '{"packName":"'+ val2.packName + '",' 
+				      curStr += '"price":"'+ val2.price + '",' 
+				      curStr += '"number":"'+ val2.number + '",' 
+				      curStr += '"restaurant":"'+ val2.restaurant+ '"},' 
 				  })
-				  str += '],'
+				  curStr += '],'
 			    })
+			    if(curOrderDetails == null || curOrderDetails =='{}'){
+			      //update currentUsers
+			      str += curStr
+			    }else{
+			      str += curStr
+			      curOrderDetails = eval('('+curOrderDetails+')');
+			      for(var orderUserName in curOrderDetails){
+			           var isOld = "Y"
+			           $.each(curUsers,function(i,val){
+				       if(val.name == orderUserName)isOld = "N"
+				   })
+				   if(isOld == "Y"){
+				      //already existing order without update, so just add them
+				      str += '"' + orderUserName + '":['
+				      $.each(curOrderDetails[orderUserName],function(j,order){
+				        str += '{"packName":"'+order.packName+'",'
+				        str += '"price":"'+ order.price + '",' 
+				        str += '"number":"'+ order.number + '",' 
+				        str += '"restaurant":"'+ order.restaurant+ '"},' 
+				      })
+				      str += '],'
+
+				   }
+			       }
+			    }
 			    str +="}"
 		            localStorage.removeItem("orderDetails");
 			    localStorage.setItem("orderDetails",str);
