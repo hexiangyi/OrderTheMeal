@@ -1,6 +1,9 @@
 jQuery(
    function(){
-           $("#choosePeoplePage").live("pagecreate",function(){
+           $("#choosePeoplePage").live("pageshow",function(){
+			    /*$($input[name="userCheckBox"]).each(function(){
+			        $(this).attr("checked",false)
+			    });*/
 		 var userList = ""
 		 var tmpId = ""
 		 var num = 1;
@@ -9,17 +12,21 @@ jQuery(
 		     userList  += '<li><input type="checkbox" name="userCheckBox" id= ' + tmpId + ' class="custom" value="' +  val.name + '"/><label for=' + tmpId +'>'+ val.name + '</label></li>';
 		     num += 1;
 		 });
+		 $("#listPeople").empty();
 		 $("#listPeople").append(userList);
+		 $("#listPeople").listview('refresh');
 	   });
 
-           $("#chooseRestaurantPage").live("pagecreate",function(){
+           $("#chooseRestaurantPage").live("pageshow",function(){
 	         var restaurantList = ""
 		 var tmpId = ""
 		 $.each(restaurants,function(i,val){
 		     tmpId = "checkbox-r" + i;
 		     restaurantList  += '<li><input type="checkbox" name="restCheckBox" id= ' + tmpId + ' class="custom" value="' + val.name +'"/><label for=' + tmpId +'>'+ val.name + '</label></li>';
 		 });
+		 $("#listRestaurant").empty();
 		 $("#listRestaurant").append(restaurantList);
+		 $("#listRestaurant").listview('refresh');
 	         
 
 	   });
